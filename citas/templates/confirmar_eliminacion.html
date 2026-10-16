@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Eliminar cita{% endblock %}
+{% block content %}
+<h1>¿Eliminar cita?</h1><p>{{ cita }}</p>
+<form method="post">{% csrf_token %}<button type="submit">Sí, eliminar</button></form>
+<p><a href="{% url 'lista' %}">Cancelar</a></p>
+{% endblock %}

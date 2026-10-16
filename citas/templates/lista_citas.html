@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Citas médicas</h1>
+<p>Consulta y administra las citas registradas.</p>
+<a class="button" href="{% url 'crear' %}">Nueva cita</a>
+<div class="table-wrap"><table>
+  <thead><tr><th>Paciente</th><th>Doctor</th><th>Fecha</th><th>Estado</th><th>Acciones</th></tr></thead>
+  <tbody>{% for cita in citas %}
+  <tr><td>{{ cita.paciente }}</td><td>{{ cita.doctor }}</td><td>{{ cita.fecha|date:"d/m/Y" }}</td><td>{{ cita.estado }}</td>
+    <td class="actions"><a href="{% url 'editar' cita.id %}">Editar</a> · <a href="{% url 'eliminar' cita.id %}">Eliminar</a></td></tr>
+  {% empty %}<tr><td colspan="5">Todavía no hay citas registradas.</td></tr>{% endfor %}</tbody>
+</table></div>
+{% endblock %}
